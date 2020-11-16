@@ -4,15 +4,22 @@ import json
 import os
 
 
+# 打开文件
 sqlFo = open("test","r")
+# 读取文件
+sqlStr = sqlFo.read()
 
-print ("文件名: ", sqlFo.name)
-print ("是否已关闭 : ", sqlFo.closed)
-print ("访问模式 : ", sqlFo.mode)
 
-sqlStr = sqlFo.read(10)
 
-print ("读取的字符串是 : ", sqlStr)
+
+
+
+
+print ("读取的字符串是:", sqlStr)
+
+
+
 
 # 关闭打开的文件
 sqlFo.close() 
+
