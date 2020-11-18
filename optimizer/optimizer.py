@@ -1,49 +1,44 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*- 
-import json
-import os
-
-
-# 打开文件
-sqlFo = open("abc.sql","r")
-# 读取文件
-sqlStr = sqlFo.read()
-# 关闭打开的文件
-sqlFo.close() 
-# 生成Json
-sqlJson = json.loads(sqlStr)
 
 
 # 生成二叉树
-class Node(object):
-    '生成二叉树节点'
-    def __init__(self, val=-1, left= None, right = None):
+class TreeNode(object):
+    '二叉树节点类'
+    def __init__(self, val=None, left=None, right=None):
         self.val = val 
         self.left = left
         self.right = right
 
-class Tree(object):
-    '生成二叉树'
+class BinTree(object):
+    '二叉树类'
     # 初始化
     def __init__(self):
-        self.root = Node()
-        self.Queue = []
+        self.root = None
+        self.queue = []
     # 添加节点
     def add(self, val):
-        node = Node(val)
-        if self.root.val == -1:
+        node = TreeNode(val)
+        # 如果树是空的，则对根节点赋值
+        if self.root == None:
             self.root = node 
-            self.Queue.append(self.root)
+            self.queue.append(self.root)
         else:
-            currentNode = self.Queue[0]
+            currentNode = self.queue[0]
             if currentNode.left == None:
                 currentNode.left = node 
-                self.Queue.append(node)
-            else 
+                self.queue.append(currentNode.left)
+            else: 
                 currentNode.right = node 
-                self.Queue.append(node)
-                self.Queue.pop(0)
-
-
+                self.queue.append(currentNode.right)
+                self.queue.pop(0)
+    # 前序遍历
+    def preOrderTraversal(self, root):
+        # 遍历终止条件
+        if root == None:
+            return
+        print(root.val)
+        self.preOrderTraversal(root.left)
+        self.preOrderTraversal(root.right)
 
 
