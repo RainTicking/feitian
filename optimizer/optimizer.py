@@ -5,10 +5,17 @@
 # 生成二叉树
 class TreeNode(object):
     '二叉树节点类'
-    def __init__(self, val=None, left=None, right=None):
-        self.val = val 
-        self.left = left
-        self.right = right
+    def __init__(self, data=None):
+        self.type = data['type'] 
+        self.name = data['name']
+        self.value = data['value']
+        self.first_line = data['first_line']
+        self.first_column = data['first_column']
+        self.last_line = data['last_line']
+        self.last_column = data['last_column']
+        self.left = data['left']
+        self.right = data['right']
+
 
 class BinTree(object):
     '二叉树类'
@@ -17,8 +24,8 @@ class BinTree(object):
         self.root = None
         self.queue = []
     # 添加节点
-    def add(self, val):
-        node = TreeNode(val)
+    def add(self, data):
+        node = TreeNode(data)
         # 如果树是空的，则对根节点赋值
         if self.root == None:
             self.root = node 
