@@ -17,33 +17,30 @@ class TreeNode(object):
         self.right = data['right']
 
 
-class BinTree(object):
+class jsonToTree(object):
     '二叉树类'
     # 初始化
     def __init__(self):
         self.root = None
     # 添加节点
-    def add(self, data):
+    def create(self, data):
         node = TreeNode(data)
+        root = node
         # 如果树是空的，则对根节点赋值
-        if self.root == None:
+        if node.left <> '':
+            
             self.root = node 
-            self.queue.append(self.root)
         else:
             currentNode = self.queue[0]
             if currentNode.left == None:
                 currentNode.left = node 
-                self.queue.append(currentNode.left)
             else: 
                 currentNode.right = node 
-                self.queue.append(currentNode.right)
-                self.queue.pop(0)
     # 前序遍历
     def preOrderTraversal(self, root):
         # 遍历终止条件
         if root == None:
             return
-        print(root.val)
         self.preOrderTraversal(root.left)
         self.preOrderTraversal(root.right)
 
