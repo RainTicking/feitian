@@ -21,14 +21,17 @@ class jsonToTree(object):
     '二叉树类'
     # 初始化
     def __init__(self):
-        self.root = None
+        self.node = None
+        self.left = None
+        self.right = None
+        
     # 添加节点
     def create(self, data):
-        node = TreeNode(data)
+        self.node = TreeNode(data)
         root = node
         # 如果树是空的，则对根节点赋值
         if node.left <> '':
-            
+             
             self.root = node 
         else:
             currentNode = self.queue[0]

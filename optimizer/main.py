@@ -19,3 +19,6 @@ if __name__ == '__main__':
         tree.add(i)
     tree.preOrderTraversal(tree.root)
 
+
+
+
