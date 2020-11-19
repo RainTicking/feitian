@@ -22,7 +22,6 @@ class BinTree(object):
     # 初始化
     def __init__(self):
         self.root = None
-        self.queue = []
     # 添加节点
     def add(self, data):
         node = TreeNode(data)
