@@ -2,48 +2,46 @@
 # -*- coding: UTF-8 -*- 
 
 
-# 生成二叉树
 class TreeNode(object):
     '二叉树节点类'
     def __init__(self, data=None):
-        self.type = data['type'] 
-        self.name = data['name']
-        self.value = data['value']
-        self.first_line = data['first_line']
-        self.first_column = data['first_column']
-        self.last_line = data['last_line']
-        self.last_column = data['last_column']
-        self.left = data['left']
-        self.right = data['right']
-
-
-class jsonToTree(object):
-    '二叉树类'
-    # 初始化
-    def __init__(self):
-        self.node = None
+        self.data = data
         self.left = None
         self.right = None
-        
-    # 添加节点
-    def create(self, data):
-        self.node = TreeNode(data)
-        root = node
-        # 如果树是空的，则对根节点赋值
-        if node.left <> '':
-             
-            self.root = node 
-        else:
-            currentNode = self.queue[0]
-            if currentNode.left == None:
-                currentNode.left = node 
-            else: 
-                currentNode.right = node 
+
+
+class JsonToTree(object):
+    '二叉树类'
+    # 初始化
+    def __init__(self, data = None):
+        node = TreeNode(data.copy())
+        self.root = node
+        self.queue = []
+        self.queue.append(node)
+    # 生成树
+    def createTree(self):
+        if self.root.data is None:
+            return
+        while self.queue:
+            tmpNode = self.queue[0]
+            if tmpNode.data['left'] != '':
+                node = TreeNode(tmpNode.data['left'])
+                tmpNode.left = node
+                self.queue.append(node)
+                tmpNode.data['left'] = ''
+            elif tmpNode.data['right'] != '':
+                node = TreeNode(tmpNode.data['right'])
+                tmpNode.right = node
+                self.queue.append(node)
+                tmpNode.data['right'] = ''
+            else:
+                self.queue.pop(0)
     # 前序遍历
     def preOrderTraversal(self, root):
         # 遍历终止条件
         if root == None:
             return
+        print(root.data['name'])
         self.preOrderTraversal(root.left)
         self.preOrderTraversal(root.right)
 

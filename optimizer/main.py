@@ -4,7 +4,7 @@ import json
 import optimizer
 
 # 打开文件
-sqlFo = open("abc.sql","r")
+sqlFo = open("json","r")
 # 读取文件
 sqlStr = sqlFo.read()
 # 关闭打开的文件
